@@ -74,8 +74,8 @@ export function useUserTokens() {
       const name = multicallData[baseIndex]?.result as string || "Unknown";
       const symbol = multicallData[baseIndex + 1]?.result as string || "???";
       const decimals = multicallData[baseIndex + 2]?.result as number || 18;
-      const rawTotalSupply = multicallData[baseIndex + 3]?.result as bigint || 0n;
-      const rawBalance = multicallData[baseIndex + 4]?.result as bigint || 0n;
+      const rawTotalSupply = multicallData[baseIndex + 3]?.result as bigint || BigInt(0);
+      const rawBalance = multicallData[baseIndex + 4]?.result as bigint || BigInt(0);
 
       formattedTokens.push({
         address: address as `0x${string}`,

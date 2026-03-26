@@ -84,8 +84,8 @@ export function TokenDetails({ tokenAddress }: TokenDetailsProps) {
   const name = data[0].result as string;
   const symbol = data[1].result as string;
   const decimals = data[2].result as number;
-  const totalSupply = formatUnits((data[3].result as bigint) || 0n, decimals);
-  const balance = formatUnits((data[4].result as bigint) || 0n, decimals);
+  const totalSupply = formatUnits((data[3].result as bigint) || BigInt(0), decimals);
+  const balance = formatUnits((data[4].result as bigint) || BigInt(0), decimals);
 
   return (
     <div className="max-w-3xl mx-auto space-y-6">
