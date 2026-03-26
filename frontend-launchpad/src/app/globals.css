@@ -1,0 +1,78 @@
+@import "tailwindcss";
+@config "../../tailwind.config.ts";
+
+@layer base {
+  :root {
+    /* Base Colors - Deep, rich dark theme */
+    --background: #09090b;
+    --foreground: #fafafa;
+    --text-muted: #a1a1aa;
+
+    /* Surface Colors for Cards and Modals */
+    --surface: rgba(24, 24, 27, 0.6);
+    --surface-hover: rgba(39, 39, 42, 0.8);
+    --surface-border: rgba(255, 255, 255, 0.08);
+
+    /* Accents - Purple & Cyan */
+    --primary: #8b5cf6;
+    --primary-glow: rgba(139, 92, 246, 0.4);
+    --secondary: #3b82f6;
+    --accent-cyan: #06b6d4;
+    --accent-purple: #9333ea;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    /* Subtle background grid pattern for Web3 feel */
+    background-image: 
+      radial-gradient(circle at 50% 0%, rgba(139, 92, 246, 0.15), transparent 50%),
+      linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 100% 100%, 40px 40px, 40px 40px;
+    background-attachment: fixed;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #3f3f46;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #52525b;
+  }
+}
+
+@layer components {
+  /* The core glassmorphism utility used across all cards, 
+    modals, and dropdowns to ensure consistent UX.
+  */
+  .glass-panel {
+    @apply bg-surface backdrop-blur-xl border border-surface-border rounded-2xl shadow-glass;
+  }
+
+  /* Premium button gradient styling 
+  */
+  .btn-gradient {
+    @apply bg-gradient-primary text-white font-medium transition-all duration-300 hover:shadow-glow hover:opacity-90;
+  }
+
+  /* Hides number input arrows natively for cleaner token supply inputs 
+  */
+  .no-spinner::-webkit-inner-spin-button,
+  .no-spinner::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  .no-spinner {
+    -moz-appearance: textfield;
+  }
+}
